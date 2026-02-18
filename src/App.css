@@ -1,42 +1,111 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+body {
+  background-color: black;
+  margin: 0;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+main {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: white solid 3px;
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 50%;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.link {
+  text-decoration: none;
+  position: relative;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  padding: 100px 200px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.link:hover {
+  transform: translateY(-10px);
+  opacity: 1;
 }
 
-.card {
-  padding: 2em;
+.link:hover ~ a {
+  opacity: 0.3;
 }
 
-.read-the-docs {
-  color: #888;
+.nav-links:hover a:not(:hover) {
+  opacity: 0.1;
+}
+
+.nav-links a:nth-child(1) { transform: translateY(150px); }
+.nav-links a:nth-child(2) { transform: translateY(-50px); }
+.nav-links a:nth-child(3) { transform: translateY(-250px); }
+.nav-links a:nth-child(4) { transform: translateY(-450px); }
+
+.home-link {
+
+  background-color: red;
+}
+.about-link {
+
+  background-color: #440055;
+}
+
+.experience-link{
+
+  background-color: #FF00FF;
+}
+.projects-link{
+
+  background-color: #aa3322;
+}
+/* .nav-links li:hover { */
+/*   transform: translateY(-35px); */
+/*   background: #cc0000; */
+/* } */
+/**/
+
+.nav-links li {
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+
+.footer {
+  display: none;
 }
