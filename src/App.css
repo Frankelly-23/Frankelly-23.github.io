@@ -1,8 +1,8 @@
 body {
-  background-color: black;
   margin: 0;
   min-height: 100vh;
   overflow: hidden;
+  transition: 0.3s;
 }
 
 main {
@@ -22,7 +22,6 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-right: white solid 3px;
 }
 
 .nav-container {
@@ -43,8 +42,7 @@ main {
   text-align: center;
 }
 
-.link {
-  text-decoration: none;
+.nav-links a {
   position: relative;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
@@ -53,6 +51,7 @@ main {
   cursor: pointer;
   display: flex;
   justify-content: center;
+  text-decoration: none;
   align-items: center;
   -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
@@ -104,6 +103,7 @@ main {
   font-size: 3rem;
   font-weight: bold;
 }
+
 
 
 .footer {

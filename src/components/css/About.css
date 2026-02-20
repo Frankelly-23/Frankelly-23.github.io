@@ -1,0 +1,14 @@
+.about-container {
+  background-color: #f0f2f5;
+  color: #343a40;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.about-link {
+  background-color: #6c757d;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 4px;
+}

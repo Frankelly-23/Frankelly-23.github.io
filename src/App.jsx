@@ -1,5 +1,5 @@
 
-// import { useState } from 'react'
+import { useState } from 'react'
 
 import {
   BrowserRouter as Router,
@@ -15,16 +15,18 @@ import Experience from './components/Experience'
 import Projects from './components/Projects'
 
 function App() {
+  const [view, setView] = useState("Home")
+
   return (
     <Router>
       <main>
       <nav className="navbar">
         <div className="nav-container">
           <ul className="nav-links">
-            <Link to="/projects" className="projects-link link"><li>projects</li></Link>
-            <Link to="/experience" className="experience-link link"><li>experience</li></Link>
-            <Link to="/about" className="about-link link"><li>about</li></Link>
-            <Link to="/" className="home-link link"><li>Home</li></Link>
+            <Link to="/projects" onClick={() => setView("Projects")} className="projects-link link"><li>projects</li></Link>
+            <Link to="/experience" onClick={() => setView("Experience")} className="experience-link link"><li>experience</li></Link>
+            <Link to="/about" onClick={() => setView("About")} className="about-link link"><li>about</li></Link>
+            <Link to="/" onClick={() => setView("Home")} className="home-link link"><li>Home</li></Link>
           </ul>
         </div>
       </nav>
@@ -37,7 +39,7 @@ function App() {
         </Routes>
       </section>
       <footer className="footer">
-        <p>Frankelly Cordero TM • Books & Thoughts</p>
+        <p>Frankelly Cordero TM • portfolio</p>
       </footer>
       </main>
     </Router>
