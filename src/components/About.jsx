@@ -5,7 +5,7 @@ export default function About(){
 
   return (
     <section id="about" className="about-section">
-      <h2 className="section-title">About Me</h2>
+      <h2 className="section-title">[+] About Me</h2>
       <div className="container">
         
         <div className="about-content">
@@ -22,7 +22,7 @@ export default function About(){
             </p>
             
             <p>
-              I work comfortably with HTML, CSS, JavaScript, Linux environments (including Kali Linux),
+              I work comfortably with JavaScript/TypeScript (node), Linux environments,
               bash scripting, and networking fundamentals. I enjoy creating dynamic web experiences,
               but I’m equally focused on understanding vulnerabilities and how to build resilient systems.
             </p>
@@ -47,10 +47,10 @@ export default function About(){
           <div className="about-skills">
             <h3>Technologies</h3>
             <ul className="skills-list">
-              <li>Node ecosystem</li>
-              <li>Linux lover</li>
+              <li>Node ecosystem    <i className="fa-brands fa-node-js"></i></li>
+              <li>Linux lover     <i class="fa-brands fa-linux"></i></li>
               <li>Bash Scripting</li>
-              <li>Python</li>
+              <li>Python    <i className="fa-brands fa-python"></i></li>
               <li>Networking</li>
             </ul>
             <img src="/img/portfolio-picture1.jpg" alt="Frankelly Cordero" className="about-image" />

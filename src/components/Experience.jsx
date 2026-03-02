@@ -4,7 +4,7 @@ export default function Experience(){
 
   return (
     <section id="experience" className="experience-section">
-      <h2 className="section-title">Experience</h2>
+      <h2 className="section-title">[+] Experience</h2>
       <div className="container">
         
         <div className="experience-content">
@@ -25,7 +25,7 @@ export default function Experience(){
               To complement theoretical knowledge with practical application, I have actively engaged in various simulated penetration testing scenarios by successfully completing <strong>several VulnHub machines</strong>. This hands-on experience has honed my skills in reconnaissance, exploitation, and post-exploitation techniques across diverse environments.
             </p>
             <p>
-              Additionally, I possess a <strong>Linux Personalization Certificate from the Hack3You Academy</strong>, which has deepened my expertise in securing and optimizing Linux-based systems—a critical skill in cybersecurity.
+              Additionally, I possess a <strong>Linux Personalization Certificate from the Hack4You Academy</strong>, which has deepened my expertise in securing and optimizing Linux-based systems—a critical skill in cybersecurity.
             </p>
           </div>
 

@@ -4,7 +4,7 @@ export default function Projects(){
 
   return (
     <section id="projects" className="projects-section">
-      <h2 className="section-title">Projects</h2>
+      <h2 className="section-title">[+] Projects</h2>
       <div className="container">
         
         <div className="projects-grid">

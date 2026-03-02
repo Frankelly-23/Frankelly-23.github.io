@@ -3,10 +3,11 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link,
-  useLocation
+  NavLink,
+  useLocation,
+  useNavigate
 } from "react-router-dom"
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 import './App.css'
 import About from './components/About'
@@ -15,6 +16,10 @@ import Projects from './components/Projects'
 
 function AppContent() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const isScrolling = useRef(false);
+
+  const routes = ["/", "/experience", "/projects"];
 
   const themes = {
     "/": "theme-about",
@@ -28,6 +33,29 @@ function AppContent() {
     document.body.className = themeClass;
   }, [themeClass]);
 
+  useEffect(() => {
+    const handleScroll = (e) => {
+      if (isScrolling.current) return;
+
+      const currentIndex = routes.indexOf(location.pathname);
+      
+      if (e.deltaY > 0 && currentIndex < routes.length - 1) {
+        // Scroll Down -> Next Page
+        isScrolling.current = true;
+        navigate(routes[currentIndex + 1]);
+        setTimeout(() => { isScrolling.current = false; }, 1000);
+      } else if (e.deltaY < 0 && currentIndex > 0) {
+        // Scroll Up -> Previous Page
+        isScrolling.current = true;
+        navigate(routes[currentIndex - 1]);
+        setTimeout(() => { isScrolling.current = false; }, 1000);
+      }
+    };
+
+    window.addEventListener('wheel', handleScroll);
+    return () => window.removeEventListener('wheel', handleScroll);
+  }, [location.pathname, navigate]);
+
   return (
     <main>
       <nav className="navbar">
@@ -38,24 +66,24 @@ function AppContent() {
             <span className="prompt-symbol">:~$</span>
           </h1>
           <ul className="nav-links">
-            <Link to="/projects" className="projects-link link">
-              <span>❯ </span>
-              <span className="prompt-user">guest@portfolio</span>
-              <span className="prompt-symbol">:~$</span>
-              <span className="prompt-command"> cd ./projects</span>
-            </Link>
-            <Link to="/experience" className="experience-link link">
-              <span>❯ </span>
-              <span className="prompt-user">guest@portfolio</span>
-              <span className="prompt-symbol">:~$</span>
-              <span className="prompt-command"> cd ./experience</span>
-            </Link>
-            <Link to="/" className="about-link link">
+            <NavLink to="/" className="about-link link" end>
               <span>❯ </span>
               <span className="prompt-user">guest@portfolio</span>
               <span className="prompt-symbol">:~$</span>
               <span className="prompt-command"> cd ./about</span>
-            </Link>
+            </NavLink>
+            <NavLink to="/experience" className="experience-link link">
+              <span>❯ </span>
+              <span className="prompt-user">guest@portfolio</span>
+              <span className="prompt-symbol">:~$</span>
+              <span className="prompt-command"> cd ./experience</span>
+            </NavLink>
+            <NavLink to="/projects" className="projects-link link">
+              <span>❯ </span>
+              <span className="prompt-user">guest@portfolio</span>
+              <span className="prompt-symbol">:~$</span>
+              <span className="prompt-command"> cd ./projects</span>
+            </NavLink>
           </ul>
           <ul className="nav-social-icons">
             <li>
@@ -72,15 +100,14 @@ function AppContent() {
         </div>
       </nav>
       <section className='main-content'>
-        <Routes>
-          <Route path="/" exact element={<About />} />
-          <Route path="/experience" exact element={<Experience />} />
-          <Route path="/projects" exact element={<Projects />} />
-        </Routes>
+        <div key={location.pathname} className="page-transition">
+          <Routes location={location}>
+            <Route path="/" exact element={<About />} />
+            <Route path="/experience" exact element={<Experience />} />
+            <Route path="/projects" exact element={<Projects />} />
+          </Routes>
+        </div>
       </section>
-      <footer className="footer">
-        <p>Frankelly Cordero TM • portfolio</p>
-      </footer>
     </main>
   )
 }
