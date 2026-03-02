@@ -1,110 +1,151 @@
+:root {
+  --font-heading: 'Press Start 2P', cursive;
+  --font-body: 'Orbitron', sans-serif;
+}
+
+.theme-experience {
+  --color1: #050E3C;
+  --color2: #002455;
+  --color3: #DC0000;
+  --color4: #FF3838;
+}
+.theme-about {
+  --color1: #280905;
+  --color2: #740a03;
+  --color3: #c3110c;
+  --color4: #e6501b;
+}
+
+.theme-projects {
+  --color1: #19183B;
+  --color2: #708993;
+  --color3: #A1C2BD;
+  --color4: #E7F2EF;
+}
+
 body {
+  background-color: var(--color1);
+  color: var(--color4);
+  font-family: var(--font-body);
   margin: 0;
-  min-height: 100vh;
   overflow: hidden;
-  transition: 0.3s;
 }
 
 main {
   display: flex;
   min-height: 100vh;
+  transition: 
+    background-color 0.6s ease,
+    color 0.6s ease;
+}
+
+section {
+  transition:
+    background-color 0.6s ease,
+    color 0.6s ease,
+    border-color 0.6s ease;
 }
 
 .main-content {
-  width: 60%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 70%;
+  padding: 2rem;
 }
 
 .navbar {
-  width: 40%;
+  width: 30%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  border-right: 1px solid var(--color3);
+  padding: 2rem; 
 }
 
 .nav-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 2rem;
 }
 
+.name-header {
+  font-family: 'Courier New', Courier, monospace; 
+  font-size: 2rem; 
+  color: #fff; 
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 1rem 0.5rem; 
+  text-align: left; 
+  margin: 2rem 0; 
+  width: 90%; 
+}
 
 .nav-links {
   list-style: none;
   padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0;
-  width: 50%;
-  text-align: center;
+  gap: 1rem;
+  padding: 1rem;
 }
 
 .nav-links a {
-  position: relative;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  padding: 100px 200px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
+  font-family: 'Courier New', Courier, monospace;
   text-decoration: none;
-  align-items: center;
-  -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  color: #fff;
+  padding: 0.5rem;
+  transition: 0.3s;
+  border-radius: 4px;
+  font-size: 1.2rem;
 }
 
-.link:hover {
-  transform: translateY(-10px);
-  opacity: 1;
+.nav-links a:hover {
+  background-color: var(--color2);
 }
 
-.link:hover ~ a {
-  opacity: 0.3;
+.prompt-user {
+  color: var(--color3);
 }
 
-.nav-links:hover a:not(:hover) {
-  opacity: 0.1;
+.prompt-symbol {
+  color: var(--color4);
 }
 
-.nav-links a:nth-child(1) { transform: translateY(150px); }
-.nav-links a:nth-child(2) { transform: translateY(-50px); }
-.nav-links a:nth-child(3) { transform: translateY(-250px); }
-.nav-links a:nth-child(4) { transform: translateY(-450px); }
-
-.home-link {
-
-  background-color: red;
+.prompt-command {
+  color: #fff;
 }
+
+.projects-link,
+.experience-link,
 .about-link {
-
-  background-color: #440055;
+  color: #fff;
 }
 
-.experience-link{
-
-  background-color: #FF00FF;
-}
-.projects-link{
-
-  background-color: #aa3322;
-}
-/* .nav-links li:hover { */
-/*   transform: translateY(-35px); */
-/*   background: #cc0000; */
-/* } */
-/**/
-
-.nav-links li {
-  color: white;
-  font-size: 3rem;
-  font-weight: bold;
+.nav-social-icons {
+  list-style: none;
+  padding: 1.5rem 1rem;
+  display: flex;
+  gap: 2rem;
+  border-top: 1px dashed var(--color3);
+  justify-content: flex-start;
+  width: 90%;
 }
 
+.nav-social-icons a {
+  color: #fff;
+  font-size: 2rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.1));
+}
 
+.nav-social-icons a:hover {
+  color: var(--color4);
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 10px var(--color4));
+}
 
 .footer {
   display: none;
