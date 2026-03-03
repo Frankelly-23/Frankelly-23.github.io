@@ -8,8 +8,9 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+dist
+dist-ssr
 *.local
-eslint.config.js
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
