@@ -224,3 +224,94 @@ main {
   filter: drop-shadow(0 0 10px var(--color4));
 }
 
+@media (max-width: 768px) {
+  body {
+    overflow: auto;
+  }
+
+  main {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .navbar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--color3);
+    padding: 1rem;
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--color1);
+  }
+
+  .nav-container {
+    gap: 0.5rem;
+  }
+
+  .name-header {
+    font-size: 1rem;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .nav-links {
+    padding: 0;
+    gap: 0.5rem;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    padding: 0.3rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .nav-social-icons {
+    padding: 0.5rem 0;
+    gap: 1.5rem;
+    width: 100%;
+    justify-content: center;
+    border-top: 1px dashed var(--color3);
+  }
+
+  .nav-social-icons a {
+    font-size: 1.5rem;
+  }
+
+  .main-content {
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .container {
+    width: 100%;
+    padding: 1.2rem;
+    box-sizing: border-box;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .section-title {
+    position: static;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .about-section, .projects-section, .experience-section {
+    min-height: auto;
+    padding: 1rem 0;
+    flex-direction: column;
+  }
+}
+

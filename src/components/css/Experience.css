@@ -1,8 +1,7 @@
-
 .experience-section p{
   color: #fff; 
   text-align: justify;
-  font-size: 0.6rem; 
+  font-size: 0.65rem; 
   letter-spacing: 0.05em; 
   line-height: 1.6; 
 }
@@ -34,4 +33,11 @@
 
 .experience-section strong {
   color: var(--color4); 
+}
+
+@media (max-width: 768px) {
+  .experience-section p {
+    font-size: 0.8rem;
+    text-align: left;
+  }
 }
