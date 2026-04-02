@@ -14,12 +14,12 @@ import About from './components/About'
 import Experience from './components/Experience'
 import Projects from './components/Projects'
 
+const routes = ["/", "/experience", "/projects"];
+
 function AppContent() {
   const location = useLocation();
   const navigate = useNavigate();
   const isScrolling = useRef(false);
-
-  const routes = ["/", "/experience", "/projects"];
 
   const themes = {
     "/": "theme-about",
@@ -34,26 +34,74 @@ function AppContent() {
   }, [themeClass]);
 
   useEffect(() => {
+    let startY = 0;
+
+    const handleTouchStart = (e) => {
+      startY = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e) => {
+      if (isScrolling.current) return;
+      if (window.innerWidth > 768) return;
+
+      const endY = e.changedTouches[0].clientY;
+      const deltaY = startY - endY;
+      const currentIndex = routes.indexOf(location.pathname);
+
+      const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10;
+      const isAtTop = window.scrollY <= 10;
+
+      if (deltaY > 50 && isAtBottom && currentIndex < routes.length - 1) {
+        isScrolling.current = true;
+        navigate(routes[currentIndex + 1]);
+        window.scrollTo(0, 0);
+        setTimeout(() => { isScrolling.current = false; }, 1000);
+      } else if (deltaY < -50 && isAtTop && currentIndex > 0) {
+        isScrolling.current = true;
+        navigate(routes[currentIndex - 1]);
+        window.scrollTo(0, 0);
+        setTimeout(() => { isScrolling.current = false; }, 1000);
+      }
+    };
+
     const handleScroll = (e) => {
       if (isScrolling.current) return;
 
       const currentIndex = routes.indexOf(location.pathname);
       
+      // On mobile, only change page if at extreme top/bottom
+      if (window.innerWidth <= 768) {
+        const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10;
+        const isAtTop = window.scrollY <= 10;
+        
+        if (e.deltaY > 0 && !isAtBottom) return;
+        if (e.deltaY < 0 && !isAtTop) return;
+      }
+
       if (e.deltaY > 0 && currentIndex < routes.length - 1) {
-        // Scroll Down -> Next Page
+
         isScrolling.current = true;
         navigate(routes[currentIndex + 1]);
+        window.scrollTo(0, 0);
         setTimeout(() => { isScrolling.current = false; }, 1000);
       } else if (e.deltaY < 0 && currentIndex > 0) {
-        // Scroll Up -> Previous Page
+
         isScrolling.current = true;
         navigate(routes[currentIndex - 1]);
+        window.scrollTo(0, 0);
         setTimeout(() => { isScrolling.current = false; }, 1000);
       }
     };
 
     window.addEventListener('wheel', handleScroll);
-    return () => window.removeEventListener('wheel', handleScroll);
+    window.addEventListener('touchstart', handleTouchStart);
+    window.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      window.removeEventListener('wheel', handleScroll);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
   }, [location.pathname, navigate]);
 
   return (

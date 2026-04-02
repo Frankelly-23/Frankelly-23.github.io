@@ -48,7 +48,7 @@ export default function About(){
             <h3>Technologies</h3>
             <ul className="skills-list">
               <li>Node ecosystem    <i className="fa-brands fa-node-js"></i></li>
-              <li>Linux lover     <i class="fa-brands fa-linux"></i></li>
+              <li>Linux lover     <i className="fa-brands fa-linux"></i></li>
               <li>Bash Scripting</li>
               <li>Python    <i className="fa-brands fa-python"></i></li>
               <li>Networking</li>

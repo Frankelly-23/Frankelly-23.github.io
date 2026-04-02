@@ -38,6 +38,6 @@
 @media (max-width: 768px) {
   .experience-section p {
     font-size: 0.8rem;
-    text-align: left;
+    text-align: justify;
   }
 }

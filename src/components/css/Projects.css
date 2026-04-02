@@ -48,7 +48,7 @@
 @media (max-width: 768px) {
   .projects-section p {
     font-size: 0.85rem;
-    text-align: left;
+    text-align: justify;
   }
 
   .projects-section .projects-grid {
